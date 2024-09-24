@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="mt-4 mb-4">Restaurants</h1>
+  <div class="mb-3">
+    <%= link_to 'New Restaurant', new_restaurant_path, class: 'btn btn-primary' %>
+  </div>
+  <div class="list-group">
+    <% @restaurants.each do |restaurant| %>
+      <div class="list-group-item">
+        <h5 class="mb-1"><%= link_to restaurant.name, restaurant_path(restaurant) %></h5>
+        <p class="mb-1"><%= restaurant.address %></p>
+        <p class="mb-1"><%= restaurant.category.capitalize %></p>
+        <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-secondary btn-sm' %>
+        <%= link_to 'Delete', restaurant_path(restaurant),  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+      </div>
+    <% end %>
+  </div>
+</div>
